@@ -1,0 +1,44 @@
+{{# @name Home @desc The home page. #}}
+<header class="max-w-[900px] mx-auto mb-12 md:mb-[72px]">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-[900] text-center px-8 break-words">
+        Harrison Bouche,
+        <span
+            class="block lg:inline main-text-gradient bg-clip-text text-transparent bg-[length:400%] bg-[0%]"
+        >
+            Digital Architect.
+        </span>
+    </h1>
+</header>
+
+<main class="max-w-[900px] mx-auto px-8">
+    <section
+        class="flex flex-col md:flex-row flex-nowrap justify-between gap-6 items-center"
+    >
+        <div class="mb-5">
+            <img
+                class="min-w-60 size-60 rounded-full bg-tan-secondary"
+                src="{{$ asset('me.jpg') $}}"
+                alt="Harrison Bouche, sitting on a hay bale in a sunflower field"
+                width="240"
+                height="240"
+            />
+        </div>
+        <hr
+            class="hidden md:block w-0 h-12 border-0 border-r-[5px] border-dotted border-spacing-2.5"
+        />
+        <div class="box-w23">
+            <p class="mb-3">
+                Nice to meet you! My name is Harrison Bouche. I am a web
+                developer with additional skills in graphic design, audio
+                production, and business communication. My goal is to provide
+                extraordinary service while meeting your digital needs in a
+                timely manner.
+            </p>
+            <p class="mb-3">
+                I am currently open for project inquiries. Feel free to reach
+                out!
+            </p>
+            {{ partial:components/button label="Let's chat!" url="/contact" }}
+        </div>
+    </section>
+</main>

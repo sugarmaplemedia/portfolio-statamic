@@ -2,8 +2,8 @@
 id: home
 blueprint: page
 title: Home
-updated_by: ceaa75bd-bc37-4a8b-b0f2-b7af70e58b0e
-updated_at: 1693487994
+updated_by: 7f31a87c-97c7-454a-b73b-07221c3cc69c
+updated_at: 1741553265
 seo_noindex: false
 seo_nofollow: false
 seo_canonical_type: entry
@@ -104,4 +104,5 @@ page_builder:
             target_blank: true
             url: 'https://peak.1902.studio'
             button_type: inline
+template: home
 ---

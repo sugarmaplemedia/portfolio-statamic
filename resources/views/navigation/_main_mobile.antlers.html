@@ -3,7 +3,6 @@
     @desc The sites main mobile navigation rendered on each page. It's 2 levels deep by default and uses AlpineJS for interactivity.
 #}}
 
-<!-- /navigation/_main_mobile.antlers.html -->
 <nav
     x-data="{ mobileNavOpen: false }"
     class="md:hidden"
@@ -14,7 +13,7 @@
 >
     <button
         @click.prevent.stop="mobileNavOpen = !mobileNavOpen"
-        class="fixed bottom-0 right-0 z-30 flex items-center justify-center w-16 h-16 mr-8 text-xs font-bold text-white mb-safe rounded-sm bg-primary"
+        class="fixed bottom-0 right-0 z-30 flex items-center justify-center w-16 h-16 mr-8 text-xs font-bold text-tan-primary mb-safe rounded-xl bg-tan-tertiary border-2 border-tan-secondary shadow-lg shadow-tan-secondary"
         :aria-label="mobileNavOpen ? '{{ trans:strings.nav_close }}' : '{{ trans:strings.nav_open }}'"
         :aria-expanded="mobileNavOpen"
         x-text="mobileNavOpen ? '{{ trans:strings.close }}' : '{{ trans:strings.menu }}'"
@@ -89,4 +88,3 @@
         </ul>
     </div>
 </nav>
-<!-- End: /navigation/_main_mobile.antlers.html -->

@@ -3,7 +3,6 @@
     @desc The sites main desktop navigation rendered on each page. It's 2 levels deep by default and uses AlpineJS for interactivity.
 #}}
 
-<!-- /navigation/_main_desktop.antlers.html -->
 <nav class="hidden md:block" aria-label="{{ trans:strings.main_navigation_desktop }}">
     <ul class="flex flex-wrap items-center gap-x-8">
         {{ nav:main max_depth="2" include_home="true" select="title|url" }}
@@ -74,4 +73,3 @@
         {{ /nav:main }}
     </ul>
 </nav>
-<!-- End: /navigation/_main_desktop.antlers.html -->

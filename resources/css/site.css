@@ -3,7 +3,7 @@
 @import "./typography.css";
 
 @theme {
-    --color-primary: oklch(53.24% 0.301 290.86);
+    --color-primary: var(--color-tan-primary);
 
     --color-neutral: var(--color-slate-800);
     --color-neutral-50: var(--color-slate-50);
@@ -18,7 +18,12 @@
     --color-neutral-900: var(--color-slate-900);
     --color-neutral-950: var(--color-slate-950);
 
-    /* --font-sans: Gaultier, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+    --color-tan-primary: #534935;
+    --color-tan-secondary: #D3C7B6;
+    --color-tan-tertiary: #EEE7DD;
+    --color-tan-bg: #F6F3EE;
+
+    --font-sans: Nunito, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     /* --font-serif: Lavigne, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; */
     /* --font-mono: Anonymous, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
 
@@ -32,6 +37,14 @@
     --font-weight-bold: 700;
     /* --font-weight-extrabold: 800; */
     /* --font-weight-black: 900; */
+}
+
+@utility main-text-gradient {
+    --color-grd-red: rgba(99,39,28,1) 0%;
+    --color-grd-orange: rgba(200,132,71,1) 35%;
+    --color-grd-yellow: rgba(255,237,0,1) 100%;
+    
+    background-image: linear-gradient(358deg, var(--color-grd-red) 0%, var(--color-grd-orange) 35%, var(--color-grd-yellow) 100%);
 }
 
 @layer base {
