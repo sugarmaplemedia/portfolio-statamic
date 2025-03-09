@@ -37,10 +37,7 @@ return [
             'driver' => 'file',
             'path' => public_path('static'),
             'lock_hold_length' => 0,
-            'permissions' => [
-                'directory' => 0755,
-                'file' => 0644,
-            ],
+            'warm_concurrency' => 10,
         ],
 
     ],
@@ -61,9 +58,10 @@ return [
         'class' => null,
 
         'urls' => [
-            //
+            '/site.webmanifest',
+            '/sitemap.xml',
+            '/sitemaps.xml',
         ],
-
     ],
 
     /*
@@ -83,9 +81,7 @@ return [
 
         'class' => null,
 
-        'rules' => [
-            //
-        ],
+        'rules' => 'all',
 
     ],
 
@@ -155,20 +151,5 @@ return [
     'warm_queue' => env('STATAMIC_STATIC_WARM_QUEUE'),
 
     'warm_queue_connection' => env('STATAMIC_STATIC_WARM_QUEUE_CONNECTION'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Shared Error Pages
-    |--------------------------------------------------------------------------
-    |
-    | You may choose to share the same statically generated error page across
-    | all errors. For example, the first time a 404 is encountered it will
-    | be generated and cached, and then served for all subsequent 404s.
-    |
-    | This is only supported for half measure.
-    |
-    */
-
-    'share_errors' => false,
 
 ];

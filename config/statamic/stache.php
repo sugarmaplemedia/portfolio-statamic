@@ -1,5 +1,7 @@
 <?php
 
+use Statamic\Stache\Stores;
+
 return [
 
     /*
@@ -13,32 +15,59 @@ return [
     |
     */
 
-    'watcher' => env('STATAMIC_STACHE_WATCHER', 'auto'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Store
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure which Cache Store the Stache uses.
-    |
-    */
-
-    'cache_store' => null,
+    'watcher' => env('STATAMIC_STACHE_WATCHER', true),
 
     /*
     |--------------------------------------------------------------------------
     | Stores
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the stores that are used inside the Stache.
-    |
-    | https://statamic.dev/stache#stores
+    | Here you may configure which stores are used inside the Stache.
     |
     */
 
     'stores' => [
-        //
+
+        'taxonomies' => [
+            'class' => Stores\TaxonomiesStore::class,
+            'directory' => base_path('content/taxonomies'),
+        ],
+
+        'terms' => [
+            'class' => Stores\TermsStore::class,
+            'directory' => base_path('content/taxonomies'),
+        ],
+
+        'collections' => [
+            'class' => Stores\CollectionsStore::class,
+            'directory' => base_path('content/collections'),
+        ],
+
+        'entries' => [
+            'class' => Stores\EntriesStore::class,
+            'directory' => base_path('content/collections'),
+        ],
+
+        'navigation' => [
+            'class' => Stores\NavigationStore::class,
+            'directory' => base_path('content/navigation'),
+        ],
+
+        'globals' => [
+            'class' => Stores\GlobalsStore::class,
+            'directory' => base_path('content/globals'),
+        ],
+
+        'asset-containers' => [
+            'class' => Stores\AssetContainersStore::class,
+            'directory' => base_path('content/assets'),
+        ],
+
+        'users' => [
+            'class' => Stores\UsersStore::class,
+            'directory' => base_path('users'),
+        ],
+
     ],
 
     /*
@@ -61,9 +90,9 @@ return [
     | Locking
     |--------------------------------------------------------------------------
     |
-    | In order to prevent concurrent requests from updating the Stache at the
-    | same time and wasting resources, it will be locked so that subsequent
-    | requests will have to wait until the first one has been completed.
+    | In order to prevent concurrent requests from updating the Stache at
+    | the same and wasting resources, it will be "locked" so subsequent
+    | requests will have to wait until the first has been completed.
     |
     | https://statamic.dev/stache#locks
     |

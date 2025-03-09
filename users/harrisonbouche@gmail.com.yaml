@@ -1,4 +1,6 @@
 name: 'Harrison Bouche'
 super: true
-id: ba638dde-ca9a-4f85-8210-7aea78217b2f
-password_hash: $2y$12$h7K9l2wxXPVHJMN3tkoYW.RvxjKKNYGWRV3JKqK.sj6XiP9TG0pZ.
+id: 7f31a87c-97c7-454a-b73b-07221c3cc69c
+password_hash: $2y$12$i/5.KoFHQ4p50V7SYV1uWuMM6XLvQIyOVPpCvvzwDymO1BsRER.Xa
+preferences:
+  theme: light
