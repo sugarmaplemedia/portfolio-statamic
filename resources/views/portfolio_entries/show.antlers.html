@@ -1,0 +1,153 @@
+{{ push:styles }}
+	<style>
+		.portfolio-entry {
+			width: 90%;
+			max-width: 900px;
+			margin-bottom: 48px;
+		  }
+		  
+		  .portfolio-entry__heading {
+			padding-top: 1rem;
+		  }
+		  
+		  .portfolio-entry__list {
+			list-style-type: disc;
+			margin-left: 1rem;
+		  }
+		  
+		  .portfolio-entry__list-item {
+			line-height: 1.5rem;
+			margin-bottom: 0.5rem;
+		  }
+		  
+		  .portfolio-entry__image {
+			border-radius: 10px;
+			padding-bottom: 0.5rem;
+		  }
+		  
+		  .portfolio-entry__link {
+			font-weight: bold;
+			text-decoration: underline;
+		  }
+		  
+		  .portfolio-entry__breakaway-text {
+			font-weight: bold;
+			margin-bottom: 0;
+		  }
+		  
+		  .portfolio-entry__grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 30px;
+		  }
+		  
+		  .portfolio-entry__info-box {
+			margin-top: 12px;
+			grid-column: 1 / 2;
+		  }
+		  
+		  .portfolio-entry__icon {
+			width: 140px;
+			border-radius: 6px;
+			height: auto;
+		  }
+		  
+		  .portfolio-entry__title--mobile {
+			display: none;
+		  }
+		  
+		  .portfolio-entry__divider {
+			width: 20px;
+			border: 0;
+			border-left: 4px dotted var(--clr-tan-secondary);
+		  }
+		  
+		  @media only screen and (max-width: 866px) {
+			.portfolio-entry__grid {
+			  display: flex;
+			  flex-direction: column;
+			  gap: 12px;
+			}
+		  
+			.portfolio-entry__image-info {
+			  display: flex;
+			  flex-direction: row;
+			  justify-content: flex-start !important;
+			  gap: 24px;
+			}
+		  
+			.portfolio-entry__icon {
+			  width: 100%;
+			  max-width: 140px;
+			  height: 100%;
+			}
+		  
+			.portfolio-entry__info-header > * {
+			  margin: 0;
+			}
+		  
+			.portfolio-entry__title--mobile {
+			  display: block;
+			  padding-bottom: 1rem;
+			}
+		  
+			.portfolio-entry__title--desktop {
+			  display: none;
+			}
+		  
+			.portfolio-entry__divider {
+			  display: none;
+			}
+		  }
+		  
+		  @media only screen and (max-width: 640px) {
+			.portfolio-entry__icon {
+			  width: 150px;
+			  height: 150px;
+			}
+		  
+			.portfolio-entry__info-header-title {
+			  font-size: 1.75rem !important;
+			}
+		  }		  
+	</style>
+{{ /push:styles }}
+
+<main class="w-full flex justify-center">
+	<section class="portfolio-entry portfolio-entry__grid">
+		<div class="portfolio-entry__info-box flex justify-center">
+			<div class="portfolio-entry__image-info">
+				{{ icon }}
+				<img
+					class="portfolio-entry__icon"
+					src="{{ url }}"
+					alt="{{ alt }}"
+					width="512"
+					height="512"
+				/>
+				{{ /icon }}
+				<div class="portfolio-entry__info-header">
+					<h1 class="portfolio-entry__title--mobile page-heading">{{ title }}</h1>
+
+					{{ if link }}
+						{{ partial:components/button label="View Project" url="{{ link }}" }}
+					{{ /if }}
+				</div>
+			</div>
+			<hr class="portfolio-entry__divider" />
+		</div>
+
+		<div class="col-span-3 content">
+			<h1 class="portfolio-entry__title--desktop text-3xl sm:text-4xl md:text-5xl font-[900]">{{ title}}</h1>
+			{{ content }}
+
+				{{ if type == "text" }}
+					{{ text }}
+				{{ elseif type == "images" }}
+					{{ partial:portfolio_entries/images images="{{ assets }}" }}
+				{{ /if }}
+
+			{{ /content }}
+		</div>
+	</section>
+</main>

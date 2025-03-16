@@ -1,0 +1,73 @@
+{{#
+    @name Images
+    @desc A responsive image gallery that displays images in a grid layout with optional captions.
+    @param* images Array of images with url and alt properties
+#}}
+
+{{ length = images | length }}
+
+{{ push:styles}}
+    <style>
+        .pictures-length1 {
+            grid-area: 1 / 1 / 7 / 7;
+        }
+        
+        .pictures-length2:nth-of-type(1) {
+            grid-area: 1 / 1 / 7 / 4;
+        }
+        .pictures-length2:nth-of-type(2) {
+            grid-area: 1 / 4 / 7 / 7;
+        }
+        
+        .pictures-length3:nth-of-type(1) {
+            grid-area: 1 / 1 / 7 / 5;
+        }
+        .pictures-length3:nth-of-type(2) {
+            grid-area: 1 / 5 / 4 / 7;
+        }
+        .pictures-length3:nth-of-type(3) {
+            grid-area: 4 / 5 / 7 / 7;
+        }
+        
+        .pictures-length4plus:nth-of-type(1) {
+            grid-area: 1 / 1 / 7 / 5;
+        }
+        .pictures-length4plus:nth-of-type(2) {
+            grid-area: 1 / 5 / 3 / 7;
+        }
+        .pictures-length4plus:nth-of-type(3) {
+            grid-area: 3 / 5 / 5 / 7;
+        }
+        .pictures-length4plus:nth-of-type(4) {
+            grid-area: 5 / 5 / 7 / 7;
+        }
+    </style>
+{{ /push:styles}}
+
+<div class="mb-8">
+  <div>
+    <div class="aspect-video grid grid-cols-6 grid-rows-6 gap-3">
+        {{ images }}
+            {{ 
+                test = switch(
+                (length == 1) => 'pictures-length1',
+                (length == 2) => 'pictures-length2',
+                (length == 3) => 'pictures-length3',
+                () => 'pictures-length4plus'
+                )
+            }}
+            <img 
+                class="gallery-picture {{ test }}" 
+                src="{{ url }}"
+                alt="{{ alt }}"
+            />
+        {{ /images }}
+    </div>
+  </div>
+
+  {{ if length == 1 }}
+        <p class="text-sm text-center font-light my-4">
+            {{ images:0:alt }}
+        </p>
+  {{ /if }}
+</div>

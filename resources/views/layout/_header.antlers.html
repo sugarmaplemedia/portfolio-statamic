@@ -3,9 +3,221 @@
     @desc The sites header rendered on each page.
 #}}
 
-<section class="fluid-grid py-4 h-[133px] mb-6">
-    <div class="span-content flex justify-end items-center">
-        {{# Make partials you want to use for the header or use and edit premade examples like the following ones. #}}
-        {{ partial:navigation/main }}
+<header class="header__container desktop">
+    <svg class="hamburger" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <div id="menu-box" class="mobileView">
+        <div id="menu-item-box">
+            <a class="menu-item not-active" href="/">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12H3l9-9l9 9h-2M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/><path d="M9 21v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6"/></g></svg>                <p>Home</p>
+            </a>
+            <a class="menu-item not-active" href="/portfolio">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 3l8 4.5v9L12 21l-8-4.5v-9zm0 9l8-4.5M12 12v9m0-9L4 7.5m12-2.25l-8 4.5"/></svg>
+                <p>Portfolio</p>
+            </a>
+            <a class="menu-item not-active" href="/resume">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1m3 0v18m4-14h2m-2 4h2"/></svg>
+                <p>Resume</p>
+            </a>
+            <a class="menu-item not-active" href="/about-me">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                <p>About Me</p>
+            </a>
+            <a class="menu-item not-active" href="/contact">
+                <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m3 7l9 6l9-6"/></g></svg>
+                <p>Contact</p>
+            </a>
+
+        </div>
+        <hr id="menu-bar"/>
     </div>
-</section>
+</header>
+
+<script defer>
+    let hamburger = document.getElementsByClassName("hamburger")[0];
+    let menu = document.getElementById("menu-box");
+
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("flip");
+        menu.classList.toggle("mobileView");
+    });
+</script>
+
+<style>
+    .header__container {
+        width: 660px;
+        margin: 0 24px 32px auto;
+        padding: 6px 12px 12px 12px;
+        position: static;
+        top: -40px;
+        z-index: 0;
+
+        background-color: var(--color-tan-bg);
+        border-radius: 24px;
+        box-shadow: -12px 12px 3px var(--color-tan-bg);
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    #menu-item-box {
+        width: 600px;
+        height: 100px;
+        margin-bottom: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .menu-item {
+        margin: 0 5px;
+        padding: 10px 10px;
+
+        display: flex;
+
+        color: var(--color-tan-primary);
+        text-decoration: none;
+        font-weight: bold;
+        white-space: nowrap;
+
+        border-radius: 12px;
+
+        transition: 0.3s cubic-bezier(0.55,2,0.36,0.65);
+    }
+    .menu-item:focus {
+        outline: none;
+    }
+
+    .active {
+        background-color: var(--color-tan-tertiary);
+        border: 2px solid var(--color-tan-secondary);
+        box-shadow: 0 3px 10px var(--color-tan-tertiary);
+    }
+
+    .active p {
+        pointer-events: none;
+    }
+
+    .menu-icon {
+        height: 20px;
+        margin: 3px 3px 0 0;
+        transition: 0.2s ease-in 0.05s;
+    }
+
+    .not-active .menu-icon {
+        border-bottom: 2px solid var(--color-tan-primary);
+    }
+
+    .not-active::before {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 20px;
+        margin-top: 3px;
+
+        display: block;
+        z-index: 2;
+
+        border-bottom: 2px solid var(--color-tan-bg);
+
+        transition: 0.2s ease-in 0.05s;
+    }
+
+    .not-active:hover .menu-icon {
+        margin: -3px 3px 0 0;
+        padding-bottom: 1px;
+    }
+
+    .not-active:hover::before {
+        width: 0px;
+        padding-bottom: 1px;
+        margin: -3px 3px 0 0;
+
+    }
+
+    .menu-item p {
+        display: inline-block;
+        margin: 0 3px;
+        transition: 0.3s ease-out;
+    }
+
+    .not-active:hover p {
+        transform: translateY(-3px);
+    }
+
+    #menu-bar {
+        width: 600px;
+        height: 0px;
+
+        border: 0;
+        border-top: 5px dotted;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        menu {
+            margin: auto;
+        }
+    }
+
+    @media only screen and (max-width: 670px) {
+        menu {
+            width: 95%;
+        }
+
+        #menu-item-box {
+            max-width: 100%;
+        }
+
+        #menu-bar {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 640px) {
+
+        menu {
+
+            font-size: 1.25rem;
+        }
+
+        .hamburger {
+            margin-top: 18px;
+
+            position: relative;
+            z-index: 2;
+            left: 6px;
+
+            font-size: 2.5rem;
+
+            display: block;
+
+            transition: 3s linear;
+        }
+
+        .mobileView {
+            display: none;
+        }
+
+        #menu-item-box {
+            width: 100%;
+            height: auto;
+            padding: 84px 24px 24px;
+
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            flex-direction: column;
+            align-items: flex-start;
+
+            background-color: var(--color-tan-tertiary);
+            box-shadow: -3px -3px 18px var(--color-tan-secondary);
+        }
+
+        #menu-bar {
+            display: none;
+        }
+    }
+</style>

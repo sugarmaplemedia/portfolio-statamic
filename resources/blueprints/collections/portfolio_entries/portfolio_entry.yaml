@@ -1,0 +1,115 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              validate:
+                - required
+          -
+            handle: icon
+            field:
+              max_files: 1
+              min_files: 1
+              container: images
+              type: assets
+              display: Icon
+              instructions: 'Iconic representation of the entry.'
+              folder: portfolio/icons
+          -
+            handle: description
+            field:
+              type: textarea
+              display: Description
+              instructions: 'A short description of the portfolio entry.'
+          -
+            handle: content
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - strikethrough
+                - small
+                - superscript
+                - subscript
+                - code
+                - codeblock
+                - horizontalrule
+              remove_empty_nodes: false
+              type: bard
+              display: Content
+              sets:
+                content_blocks:
+                  display: 'Content Blocks'
+                  icon: dashboard-layout-3
+                  sets:
+                    images:
+                      display: Images
+                      icon: media-image-picture-gallery
+                      fields:
+                        -
+                          handle: assets
+                          field:
+                            min_files: 1
+                            mode: grid
+                            container: images
+                            dynamic: slug
+                            type: assets
+                            display: Assets
+                            folder: portfolio
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required
+          -
+            handle: tags
+            field:
+              type: terms
+              taxonomies:
+                - tags
+              display: Tags
+              mode: select
+          -
+            handle: client_work
+            field:
+              type: toggle
+              display: 'Client Work'
+              instructions: 'Whether the entry was done for a client.'
+          -
+            handle: link
+            field:
+              input_type: url
+              type: text
+              display: Link
+              instructions: "Link to the entry's web space."
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+title: 'Portfolio Entry'

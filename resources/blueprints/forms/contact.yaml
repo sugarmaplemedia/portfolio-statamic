@@ -23,7 +23,7 @@ tabs:
                 - required
                 - email
               localizable: true
-              width: 66
+              width: 33
           -
             handle: message_body
             field:

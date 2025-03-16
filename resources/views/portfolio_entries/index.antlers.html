@@ -1,0 +1,108 @@
+{{ push:styles }}
+    <style>
+        .portfolio-entry {
+			width: 90%;
+			max-width: 900px;
+			margin-bottom: 48px;
+        }
+
+        .portfolio-service-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+        }
+    
+        div.portfolio-service {
+            width: 216px;
+            position: relative;
+        }
+        .portfolio-service h2 {
+            margin-bottom: 0;
+    
+            font-size: 1.75rem;
+            line-height: 1.75rem;
+            text-transform: uppercase;
+        }
+        .portfolio-service br {
+            margin: 0;
+        }
+    
+        .portfolio-service {
+            position: absolute;
+            left: -18px;
+            bottom: 20px;
+            z-index: -1;
+    
+            transform: scale(3.5);
+            color: var(--color-tan-secondary);
+        }
+    
+        .portfolio-proficiency svg {
+            padding: 5px;
+    
+            background-color: var(--color-tan-secondary);
+            border-radius: 100%;
+        }
+    
+        @media only screen and (max-width: 850px) {
+            .portfolio-service-box {
+                flex-direction: column;
+                gap: 36px;
+            }
+        }
+    </style>
+{{ /push:styles }}
+
+
+<header class="w-full flex justify-center mb-12">
+    <h1 class="page-heading w-full max-w-[900px]">Portfolio</h1>
+</header>
+
+<main class="grid gap-6 w-full justify-center">
+    <!-- Entries -->
+    {{ collection:portfolio_entries }}
+        <a
+            class="portfolio-entry block rounded-xl bg-tan-tertiary p-6 pb-6 hover:scale-[1.02] hover:shadow-lg shadow-tan-secondary transition-all"
+            href="/portfolio/{{ slug }}"
+            aria-label="Post about {{ title }} entry in portfolio"
+        >
+            <article class="grid grid-cols-5 gap-6">
+                {{ if client_work }}
+                    <div class="col-span-5 flex items-center gap-2">
+                        <svg class="p-2 bg-secondary rounded-full" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m8.243 7.34l-6.38.925l-.113.023a1 1 0 0 0-.44 1.684l4.622 4.499l-1.09 6.355l-.013.11a1 1 0 0 0 1.464.944l5.706-3l5.693 3l.1.046a1 1 0 0 0 1.352-1.1l-1.091-6.355l4.624-4.5l.078-.085a1 1 0 0 0-.633-1.62l-6.38-.926l-2.852-5.78a1 1 0 0 0-1.794 0z"/></svg>
+                        <p class="mb-0 font-black uppercase">
+                            Client Work
+                        </p>
+                    </div>
+                {{ /if }}
+                
+                <div>
+                    <img
+                        src="{{ icon:url }}"
+                        alt="{{ title }} logo"
+                        width="512"
+                        height="512"
+                        class="w-40 rounded-xl"
+                    />
+                    <div class="grid grid-cols-3 gap-2 align-center justify-center w-fit mx-auto mt-2">
+                        {{ tags }}
+                            <span class="portfolio-proficiency">{{ svg }}</span>
+                        {{ /tags }}
+                    </div>
+                </div>
+
+                <div
+                    class="col-span-4"
+                >
+                    <h3 class="section-subheading">{{ title }}</h3>
+                    <p>
+                        {{ description }}
+                        <span class="italics underline">
+                            Learn more.
+                        </span>
+                    </p>
+                </div>
+            </article>
+        </a>
+    {{ /collection:portfolio_entries }}
+</main>

@@ -16,10 +16,13 @@
 		<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 	
         {{ vite src="resources/css/site.css|resources/js/site.js" }}
+
         {{ partial:statamic-peak-seo::snippets/seo }}
         {{ partial:statamic-peak-browser-appearance::snippets/browser_appearance }}
         {{ partial:statamic-peak-tools::snippets/live_preview }}
         {{ stack:head }}
+
+        {{ stack:styles }}
     </head>
     <body class="font-nunito text-tan-primary flex flex-col min-h-screen bg-tan-bg">
         {{ stack:seo_body }}

@@ -3,4 +3,7 @@ super: true
 id: 7f31a87c-97c7-454a-b73b-07221c3cc69c
 password_hash: $2y$12$i/5.KoFHQ4p50V7SYV1uWuMM6XLvQIyOVPpCvvzwDymO1BsRER.Xa
 preferences:
-  theme: light
+  theme: dark
+  collections:
+    portfolio_entries:
+      after_save: continue_editing

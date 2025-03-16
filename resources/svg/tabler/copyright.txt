@@ -1,0 +1,2 @@
+Currently using the "Tabler" icons by Pawel Kun. Tabler Icons are created with the MIT License.
+https://icon-sets.iconify.design/tabler/

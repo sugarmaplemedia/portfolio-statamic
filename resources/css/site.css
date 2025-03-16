@@ -36,7 +36,11 @@
     /* --font-weight-semibold: 600; */
     --font-weight-bold: 700;
     /* --font-weight-extrabold: 800; */
-    /* --font-weight-black: 900; */
+    --font-weight-black: 900;
+
+    /* Gallery theme */
+    --gallery-shadow: 0 3px 9px var(--color-tan-tertiary);
+
 }
 
 @utility main-text-gradient {
@@ -54,5 +58,60 @@
         font-family: var(--font-sans);
         /* font-family: var(--font-serif); */
         /* font-family: var(--font-mono); */
+    }
+}
+
+@utility page-heading {
+    @apply text-5xl font-black text-tan-primary;
+}
+
+@utility section-heading {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+@utility section-subheading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+@utility gallery-picture {
+    @apply bg-cover bg-center rounded-xl object-center object-cover w-full h-full;
+    box-shadow: var(--gallery-shadow);
+}
+
+@utility content {
+    > h2 {
+        @apply text-4xl font-black mt-8 mb-4;
+    }
+
+    > h3 {
+        @apply section-subheading;
+    }
+
+    > p {
+        @apply mb-2;
+    }
+
+    & a {
+        @apply font-bold underline;
+
+        &:hover {
+            @apply brightness-150;
+        }
+    }
+
+    > ul {
+        @apply list-disc ml-4;
+
+        > li {
+            @apply mb-1;
+        }
+    }
+
+    > blockquote {
+        @apply bg-tan-tertiary p-2 font-bold mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md before:bg-tan-primary before:rounded-sm before:mr-2;
     }
 }
