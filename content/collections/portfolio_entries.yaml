@@ -6,7 +6,7 @@ taxonomies:
 revisions: false
 route: '/portfolio/{slug}'
 date: true
-sort_dir: asc
+sort_dir: desc
 default_status: draft
 date_behavior:
   past: public
