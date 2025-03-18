@@ -3,7 +3,7 @@
         .portfolio-entry {
 			width: 90%;
 			max-width: 900px;
-			margin-bottom: 48px;
+			margin-bottom: 24px;
         }
 
         .portfolio-service-box {
@@ -58,7 +58,7 @@
     <h1 class="page-heading w-full max-w-[900px]">Portfolio</h1>
 </header>
 
-<main class="grid gap-6 w-full justify-center">
+<main class="grid gap-0 w-full justify-center">
     <!-- Entries -->
     {{ collection:portfolio_entries }}
         <a
@@ -84,7 +84,7 @@
                         height="512"
                         class="w-40 rounded-xl"
                     />
-                    <div class="grid grid-cols-3 gap-2 align-center justify-center w-fit mx-auto mt-2">
+                    <div class="grid grid-cols-[fit-content(33%)_fit-content(33%)_fit-content(33%)] gap-2 justify-center w-fill mx-auto mt-2">
                         {{ tags }}
                             <span class="portfolio-proficiency">{{ svg }}</span>
                         {{ /tags }}
