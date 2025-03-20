@@ -1,3 +1,40 @@
+<main class="w-full flex justify-center">
+	<section class="portfolio-entry portfolio-entry__grid">
+		<div class="portfolio-entry__info-box">
+			<div class="portfolio-entry__image-info">
+				<img
+					class="portfolio-entry__icon"
+					src="{{ icon:url }}"
+					alt="{{ icon:alt }}"
+					width="512"
+					height="512"
+				/>
+				<div class="portfolio-entry__info-header">
+					<h1 class="portfolio-entry__title--mobile page-heading">{{ title }}</h1>
+
+					{{ if link }}
+						{{ partial:components/button label="View Project" url="{{ link }}" }}
+					{{ /if }}
+				</div>
+			</div>
+			<hr class="portfolio-entry__divider" />
+		</div>
+
+		<div class="col-span-3 content">
+			<h1 class="portfolio-entry__title--desktop text-3xl sm:text-4xl md:text-5xl font-[900]">{{ title}}</h1>
+			{{ content }}
+
+				{{ if type == "text" }}
+					{{ text }}
+				{{ elseif type == "images" }}
+					{{ partial:portfolio_entries/images images="{{ assets }}" }}
+				{{ /if }}
+
+			{{ /content }}
+		</div>
+	</section>
+</main>
+
 {{ push:styles }}
 	<style>
 		.portfolio-entry {
@@ -49,7 +86,7 @@
 		  .portfolio-entry__icon {
 			width: 140px;
 			border-radius: 6px;
-			height: auto;
+			height: auto;	
 		  }
 		  
 		  .portfolio-entry__title--mobile {
@@ -71,7 +108,7 @@
 		  
 			.portfolio-entry__image-info {
 			  display: flex;
-			  flex-direction: row;
+			  flex-direction: column;
 			  justify-content: flex-start !important;
 			  gap: 24px;
 			}
@@ -112,42 +149,3 @@
 		  }		  
 	</style>
 {{ /push:styles }}
-
-<main class="w-full flex justify-center">
-	<section class="portfolio-entry portfolio-entry__grid">
-		<div class="portfolio-entry__info-box flex justify-center">
-			<div class="portfolio-entry__image-info">
-				{{ icon }}
-				<img
-					class="portfolio-entry__icon"
-					src="{{ url }}"
-					alt="{{ alt }}"
-					width="512"
-					height="512"
-				/>
-				{{ /icon }}
-				<div class="portfolio-entry__info-header">
-					<h1 class="portfolio-entry__title--mobile page-heading">{{ title }}</h1>
-
-					{{ if link }}
-						{{ partial:components/button label="View Project" url="{{ link }}" }}
-					{{ /if }}
-				</div>
-			</div>
-			<hr class="portfolio-entry__divider" />
-		</div>
-
-		<div class="col-span-3 content">
-			<h1 class="portfolio-entry__title--desktop text-3xl sm:text-4xl md:text-5xl font-[900]">{{ title}}</h1>
-			{{ content }}
-
-				{{ if type == "text" }}
-					{{ text }}
-				{{ elseif type == "images" }}
-					{{ partial:portfolio_entries/images images="{{ assets }}" }}
-				{{ /if }}
-
-			{{ /content }}
-		</div>
-	</section>
-</main>

@@ -17,7 +17,7 @@ tabs:
               validate:
                 - required
       -
-        display: 'Page builder'
+        display: 'Page Builder'
         fields:
           -
             import: page_builder

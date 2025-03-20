@@ -1,0 +1,20 @@
+{{ partial:layout/main }}
+    <h1 class="page-heading mb-12">{{ title }}</h1>
+    
+    {{ page_builder }}
+        {{ if type == 'article' }}
+            <section class="content content--article">
+                {{ content }}
+            </section>
+        {{ elseif type == 'image' }}
+            <section>
+                {{# TODO: fix this awful image partial that is built specifically for my about page image #}}
+                <img class="max-h-64 w-auto mx-auto" src="{{ asset }}" alt="{{ alt }}" width="1280" height="720">
+            </section>
+        {{ elseif type == 'button_link' }}
+            <section>
+                {{ partial:components/button label="{{ link.label }}" url="{{ link.link }}" }}
+            </section>
+        {{ /if }}
+    {{ /page_builder }}
+{{ /partial:layout/main }}

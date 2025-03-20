@@ -13,7 +13,6 @@ tabs:
                 - required
                 - 'min:2'
               localizable: true
-              width: 66
           -
             handle: email
             field:
@@ -23,9 +22,8 @@ tabs:
                 - required
                 - email
               localizable: true
-              width: 33
           -
-            handle: message_body
+            handle: message
             field:
               display: Message
               type: textarea
@@ -33,12 +31,3 @@ tabs:
                 - required
                 - 'min:5'
               localizable: true
-          -
-            handle: consent
-            field:
-              inline_label: 'I agree that my submitted data is being collected and stored.'
-              display: Consent
-              type: toggle
-              validate:
-                - accepted
-              visibility: hidden

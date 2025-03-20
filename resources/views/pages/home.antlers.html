@@ -41,4 +41,15 @@
             {{ partial:components/button label="Let's chat!" url="/contact" }}
         </div>
     </section>
+
+    <section>
+        <h2 class="section-heading">
+            Recent Projects
+        </h2>
+        <div class="flex flex-wrap justify-center">
+            {{ collection:portfolio_entries scope="entry" limit="3" sort="date:desc" }}
+                {{ partial:components/portfolio_entry_preview :$entry }}
+            {{ /collection:portfolio_entries }}
+        </div>
+    </section>
 </main>

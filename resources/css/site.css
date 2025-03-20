@@ -115,3 +115,37 @@
         @apply bg-tan-tertiary p-2 font-bold mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md before:bg-tan-primary before:rounded-sm before:mr-2;
     }
 }
+
+@utility content--article {
+    > h2 {
+        @apply text-3xl;
+    }
+
+    > h3 {
+        @apply text-xl mt-6 mb-2;
+    }
+
+    > p {
+        @apply mb-2;
+    }
+
+    & a {
+        @apply font-bold underline;
+
+        &:hover {
+            @apply brightness-150;
+        }
+    }
+
+    > ul {
+        @apply list-disc ml-4;
+
+        > li {
+            @apply mb-1;
+        }
+    }
+
+    > blockquote {
+        @apply bg-tan-tertiary p-2 font-bold mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md before:bg-tan-primary before:rounded-sm before:mr-2;
+    }
+}

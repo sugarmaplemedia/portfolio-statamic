@@ -1,4 +1,4 @@
-title: 'Page builder'
+title: 'Page Builder'
 fields:
   -
     handle: page_builder
@@ -8,7 +8,7 @@ fields:
       hide_display: true
       collapse: true
       listable: false
-      display: 'Page builder'
+      display: 'Page Builder'
       button_label: 'Add block'
       sets:
         interactive:
@@ -30,6 +30,26 @@ fields:
               fields:
                 -
                   import: cards
+            button_link:
+              display: 'Button Link'
+              icon: link
+              fields:
+                -
+                  handle: link
+                  field:
+                    type: group
+                    display: Link
+                    fields:
+                      -
+                        handle: label
+                        field:
+                          type: text
+                          display: Label
+                      -
+                        handle: link
+                        field:
+                          type: link
+                          display: Link
         text:
           display: Text
           instructions: 'Text based blocks.'
@@ -41,4 +61,41 @@ fields:
               icon: text-formatting-image-bottom
               fields:
                 -
-                  import: article
+                  handle: content
+                  field:
+                    buttons:
+                      - h2
+                      - h3
+                      - bold
+                      - italic
+                      - unorderedlist
+                      - orderedlist
+                      - removeformat
+                      - quote
+                      - anchor
+                      - image
+                      - table
+                      - strikethrough
+                      - small
+                      - superscript
+                      - subscript
+                    remove_empty_nodes: false
+                    type: bard
+                    display: Content
+        media:
+          display: Media
+          icon: media-image-picture-orientation
+          sets:
+            image:
+              display: Image
+              fields:
+                -
+                  handle: asset
+                  field:
+                    max_files: 1
+                    min_files: 1
+                    container: images
+                    folder: pages
+                    dynamic: slug
+                    type: assets
+                    display: Asset

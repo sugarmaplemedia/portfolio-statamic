@@ -1,0 +1,103 @@
+hide: true
+title: Resume
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: skills
+            field:
+              buttons:
+                - bold
+                - italic
+                - removeformat
+                - anchor
+              remove_empty_nodes: false
+              type: bard
+              display: Skills
+          -
+            handle: scholarships_and_awards
+            field:
+              type: list
+              display: 'Scholarships and Awards'
+          -
+            handle: work_experience
+            field:
+              type: replicator
+              display: 'Work Experience'
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  sets:
+                    job:
+                      display: Job
+                      fields:
+                        -
+                          handle: position
+                          field:
+                            type: text
+                            display: Position
+                            width: 50
+                        -
+                          handle: company
+                          field:
+                            type: text
+                            display: Company
+                            width: 50
+                        -
+                          handle: started
+                          field:
+                            format: Y-m
+                            type: date
+                            display: Started
+                            width: 50
+                        -
+                          handle: left
+                          field:
+                            type: date
+                            display: Left
+                            width: 50
+                            format: Y-m
+                        -
+                          handle: description
+                          field:
+                            buttons:
+                              - bold
+                              - italic
+                              - unorderedlist
+                              - orderedlist
+                              - removeformat
+                              - anchor
+                              - table
+                            remove_empty_nodes: false
+                            type: bard
+                            display: Description
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

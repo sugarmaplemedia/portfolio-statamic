@@ -1,0 +1,79 @@
+{{ partial:layout/main }}
+    <h1 class="page-heading mb-12">{{ title }}</h1>
+    
+    <section class="grid md:grid-cols-2">
+        <div>
+            {{ page_builder }}
+                {{ if type == 'article' }}
+                    <section class="content content--article">
+                        {{ content }}
+                    </section>
+                {{ elseif type == 'image' }}
+                    <section>
+                        {{# TODO: fix this awful image partial that is built specifically for my about page image #}}
+                        <img class="max-h-64 w-auto mx-auto" src="{{ asset }}" alt="{{ alt }}" width="1280" height="720">
+                    </section>
+                {{ elseif type == 'button_link' }}
+                    <section>
+                        {{ partial:components/button label="{{ link.label }}" url="{{ link.link }}" }}
+                    </section>
+                {{ /if }}
+            {{ /page_builder }}
+        </div>
+
+        {{ form:contact class="space-y-2" }}
+            {{ if errors }}
+                <div class="bg-red-400 border-2 border-red-700 rounded-md text-white p-2 font-bold">
+                    {{ errors }}
+                        {{ value }}<br>
+                    {{ /errors }}
+                </div>
+            {{ /if }}
+        
+            {{ if success }}
+                <div class="bg-green-300 border-2 border-green-700 rounded-md text-green-800 p-2 font-bold">
+                    {{ success }}
+                </div>
+            {{ /if }}
+
+            <div class="grid">
+                <label for="name" class="font-bold">
+                    Name:
+                </label>
+                {{ partial:components/input type="text" id="name" name="name" placeholder="John Smith" :required="true" :value="old:name" }}
+            </div>
+            <div class="grid">
+                <label for="email" class="font-bold">
+                    Email Address:
+                </label>
+                {{ partial:components/input type="email" id="email" name="email" placeholder="johnsmith@orchard.co" required :value="old:email" }}
+            </div>
+            <div class="grid">
+                <label for="subject" class="font-bold">
+                    Subject:
+                </label>
+                {{ partial:components/input type="text" id="subject" name="subject" placeholder="Subject" required :value="old:subject" }}
+            </div>
+            <div class="grid">
+                <label for="message" class="font-bold">
+                    Message:
+                </label>
+                <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="8"
+                    class="rounded-xl border-2 border-tan-tertiary p-2 drop-shadow-input transition-all duration-100 focus:border-tan-secondary"
+                >{{ old:message }}</textarea>
+            </div>
+
+            <button
+                type="submit"
+                class="cursor-pointer rounded-xl border-2 border-tan-secondary bg-tan-tertiary p-1.5 hover:border-tan-primary hover:bg-tan-secondary disabled:grayscale-[90%] disabled:hover:border-tan-secondary disabled:hover:bg-tan-tertiary transition-all duration-100"
+            >
+                Send Message
+            </button>
+        
+        {{ /form:contact }}
+    </section>
+{{ /partial:layout/main }}
