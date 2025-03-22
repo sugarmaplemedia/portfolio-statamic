@@ -15,13 +15,15 @@
         class="flex flex-col md:flex-row flex-nowrap justify-between gap-6 items-center"
     >
         <div class="mb-5">
+            {{ asset url="/images/me.jpg" }}
             <img
                 class="min-w-60 size-60 rounded-full bg-tan-secondary"
-                src="{{$ asset('me.jpg') $}}"
-                alt="Harrison Bouche, sitting on a hay bale in a sunflower field"
+                src="{{ url }}"
+                alt="{{ alt }}"
                 width="240"
                 height="240"
-            />
+            />  
+            {{ /asset }}
         </div>
         <hr
             class="hidden md:block w-0 h-12 border-0 border-r-[5px] border-dotted border-spacing-2.5"
