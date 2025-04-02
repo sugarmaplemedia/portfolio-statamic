@@ -1,0 +1,28 @@
+{{ partial:layout/main }}
+    <h1 class="page-heading mb-12">Blog</h1>
+
+    <section class="flex flex-col gap-6">
+        {{ collection:blog_posts }}
+            <a
+                class="bg-tan-tertiary/50 shadow-tan-secondary block rounded-xl p-6 pb-6 transition-all hover:scale-[1.02] hover:shadow-lg"
+                href="/blog/{{ slug }}"
+                aria-labelledby="{{ slug }}-heading"
+            >
+                <article>
+                    <h3
+                        id="{{ slug }}-heading"
+                        class="section-subheading mb-0"
+                    >
+                        {{ title }}
+                    </h3>
+                    <p class="mb-2 italic">{{ date }}</p>
+
+                    <p class="mb-2">
+                        {{ description }}
+                    </p>
+                    <p class="italics underline">Learn more.</p>
+                </article>
+            </a>
+        {{ /collection:blog_posts }}
+    </section>
+{{ /partial:layout/main }}

@@ -19,50 +19,45 @@
     --color-neutral-950: var(--color-slate-950);
 
     --color-tan-primary: #534935;
-    --color-tan-secondary: #D3C7B6;
-    --color-tan-tertiary: #EEE7DD;
-    --color-tan-bg: #F6F3EE;
+    --color-tan-secondary: #d3c7b6;
+    --color-tan-tertiary: #eee7dd;
+    --color-tan-bg: #f6f3ee;
 
-    --font-sans: Nunito, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    /* --font-serif: Lavigne, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; */
-    /* --font-mono: Anonymous, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+    --font-sans:
+        Nunito, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     --font-weight-*: initial;
-    /* --font-weight-hairline: 100; */
-    /* --font-weight-thin: 200; */
-    /* --font-weight-light: 300; */
     --font-weight-normal: 400;
-    /* --font-weight-medium: 500; */
-    /* --font-weight-semibold: 600; */
     --font-weight-bold: 700;
-    /* --font-weight-extrabold: 800; */
     --font-weight-black: 900;
 
     /* Gallery theme */
     --gallery-shadow: 0 3px 9px var(--color-tan-tertiary);
-
 }
 
 @utility main-text-gradient {
-    --color-grd-red: rgba(99,39,28,1) 0%;
-    --color-grd-orange: rgba(200,132,71,1) 35%;
-    --color-grd-yellow: rgba(255,237,0,1) 100%;
-    
-    background-image: linear-gradient(358deg, var(--color-grd-red) 0%, var(--color-grd-orange) 35%, var(--color-grd-yellow) 100%);
+    --color-grd-red: rgba(99, 39, 28, 1) 0%;
+    --color-grd-orange: rgba(200, 132, 71, 1) 35%;
+    --color-grd-yellow: rgba(255, 237, 0, 1) 100%;
+
+    background-image: linear-gradient(
+        358deg,
+        var(--color-grd-red) 0%,
+        var(--color-grd-orange) 35%,
+        var(--color-grd-yellow) 100%
+    );
 }
 
 @layer base {
     html {
         color: var(--color-neutral);
-        /* Set sans, serif or mono stack with optional custom font as default. */
         font-family: var(--font-sans);
-        /* font-family: var(--font-serif); */
-        /* font-family: var(--font-mono); */
     }
 }
 
 @utility page-heading {
-    @apply text-5xl font-black text-tan-primary;
+    @apply text-tan-primary text-5xl font-black;
 }
 
 @utility section-heading {
@@ -78,13 +73,13 @@
 }
 
 @utility gallery-picture {
-    @apply bg-cover bg-center rounded-xl object-center object-cover w-full h-full;
+    @apply h-full w-full rounded-xl bg-cover bg-center object-cover object-center;
     box-shadow: var(--gallery-shadow);
 }
 
 @utility content {
     > h2 {
-        @apply text-4xl font-black mt-8 mb-4;
+        @apply mt-8 mb-4 text-4xl font-black;
     }
 
     > h3 {
@@ -104,7 +99,7 @@
     }
 
     > ul {
-        @apply list-disc ml-4;
+        @apply ml-4 list-disc;
 
         > li {
             @apply mb-1;
@@ -112,7 +107,7 @@
     }
 
     > blockquote {
-        @apply bg-tan-tertiary p-2 font-bold mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md before:bg-tan-primary before:rounded-sm before:mr-2;
+        @apply bg-tan-tertiary before:bg-tan-primary mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md p-2 font-bold before:mr-2 before:rounded-sm;
     }
 }
 
@@ -122,7 +117,7 @@
     }
 
     > h3 {
-        @apply text-xl mt-6 mb-2;
+        @apply mt-6 mb-2 text-xl;
     }
 
     > p {
@@ -138,7 +133,7 @@
     }
 
     > ul {
-        @apply list-disc ml-4;
+        @apply ml-4 list-disc;
 
         > li {
             @apply mb-1;
@@ -146,6 +141,6 @@
     }
 
     > blockquote {
-        @apply bg-tan-tertiary p-2 font-bold mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md before:bg-tan-primary before:rounded-sm before:mr-2;
+        @apply bg-tan-tertiary before:bg-tan-primary mb-4 grid grid-cols-[14px_1fr] overflow-hidden rounded-md p-2 font-bold before:mr-2 before:rounded-sm;
     }
 }
