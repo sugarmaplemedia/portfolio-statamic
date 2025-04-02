@@ -22,10 +22,16 @@ rm composer-setup.php
  
 # INSTALL COMPOSER DEPENDENCIES
 php composer.phar install
+
+# INSTALL NPM DEPENDENCIES
+npm install
  
 # GENERATE APP KEY
 php artisan key:generate
- 
+
+# BUILD NODE ASSETS
+npm run build
+
 # BUILD STATIC SITE
 php please stache:warm -n -q
 php please ssg:generate
