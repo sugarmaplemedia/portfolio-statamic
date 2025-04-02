@@ -4,3 +4,23 @@ tabs:
     sections:
       -
         display: General
+        fields:
+          -
+            handle: menu_icon
+            field:
+              directory: content/icons
+              folder: tabler
+              type: icon
+              display: 'Menu Icon'
+              instructions: 'Icon to display next to the menu item.'
+              validate:
+                - required
+          -
+            handle: page
+            field:
+              max_items: 1
+              mode: select
+              collections:
+                - pages
+              type: entries
+              display: Page
