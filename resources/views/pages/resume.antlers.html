@@ -1,66 +1,207 @@
 {{ partial:layout/main }}
     <section class="">
-        <h1 class="page-heading mb-12">Resume</h1>
+        <h1 class="page-heading mb-12">{{ title }}</h1>
     </section>
 
+    {{ if page_builder }}
+        <section class="mb-8">
+            {{ page_builder }}
+                {{ if type == 'article' }}
+                    <section class="content content--article">
+                        {{ content }}
+                    </section>
+                {{ elseif type == 'image' }}
+                    <section>
+                        {{# TODO: fix this awful image partial that is built specifically for my about page image #}}
+                        <img
+                            class="mx-auto max-h-64 w-auto"
+                            src="{{ asset }}"
+                            alt="{{ alt }}"
+                            width="1280"
+                            height="720"
+                        />
+                    </section>
+                {{ elseif type == 'button_link' }}
+                    <section>
+                        {{ partial:components/button :label="link.label" :url="link.link" }}
+                    </section>
+                {{ /if }}
+            {{ /page_builder }}
+        </section>
+    {{ /if }}
+
     <section class="mb-8">
-        <h2 class="section-heading">Skills and Education</h2>
+        <h2 id="skills-and-education" class="section-heading">Skills and Education</h2>
         <div class="grid grid-cols-2 gap-8">
             <div class="space-y-3">
                 {{ skills }}
             </div>
             <div>
                 <div class="degree flex items-center gap-2">
-                    <svg class="p-4 bg-tan-tertiary rounded-full size-14" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M13 17.5V22l2-1.5l2 1.5v-4.5"/><path d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"/></g></svg>
+                    <svg
+                        class="bg-tan-tertiary size-14 rounded-full p-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                    >
+                        <g
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                        >
+                            <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0" />
+                            <path d="M13 17.5V22l2-1.5l2 1.5v-4.5" />
+                            <path
+                                d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"
+                            />
+                        </g>
+                    </svg>
                     <div>
                         <p class="grid">
                             <strong>Northern Michigan University</strong>
                             B.S. Mobile and Web App Development
-                            <span class="italic text-xs mt-1">2020-2024</span>
+                            <span class="mt-1 text-xs italic">2020-2024</span>
                         </p>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 mb-4">
-                    <svg class="p-4 bg-tan-tertiary rounded-full size-14" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M13 17.5V22l2-1.5l2 1.5v-4.5"/><path d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"/></g></svg>
+                <div class="mb-4 flex items-center gap-2">
+                    <svg
+                        class="bg-tan-tertiary size-14 rounded-full p-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                    >
+                        <g
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                        >
+                            <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0" />
+                            <path d="M13 17.5V22l2-1.5l2 1.5v-4.5" />
+                            <path
+                                d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"
+                            />
+                        </g>
+                    </svg>
                     <p class="grid">
                         <strong>Northern Michigan University</strong>
                         B.S. Communication Studies
-                        <span class="italic text-xs mt-1">2020-2024</span>
+                        <span class="mt-1 text-xs italic">2020-2024</span>
                     </p>
                 </div>
                 <div class="flex gap-2">
-                    <a target="_blank" href="https://www.freecodecamp.org/certification/fcc8e0f184f-3c40-4fda-ae56-3f7fcada3917/javascript-algorithms-and-data-structures">
-                        <svg class="size-12 p-3.5 bg-tan-tertiary rounded-full" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"/><path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5"/></g></svg>
+                    <a
+                        target="_blank"
+                        href="https://www.freecodecamp.org/certification/fcc8e0f184f-3c40-4fda-ae56-3f7fcada3917/javascript-algorithms-and-data-structures"
+                    >
+                        <svg
+                            class="bg-tan-tertiary size-12 rounded-full p-3.5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                            >
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path
+                                    d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"
+                                />
+                                <path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0" />
+                                <path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5" />
+                            </g>
+                        </svg>
                     </a>
-                    <a target="_blank" href="https://www.freecodecamp.org/certification/fcc8e0f184f-3c40-4fda-ae56-3f7fcada3917/front-end-development-libraries">
-                        <svg class="size-12 p-3.5 bg-tan-tertiary rounded-full" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"/><path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5"/></g></svg>
+                    <a
+                        target="_blank"
+                        href="https://www.freecodecamp.org/certification/fcc8e0f184f-3c40-4fda-ae56-3f7fcada3917/front-end-development-libraries"
+                    >
+                        <svg
+                            class="bg-tan-tertiary size-12 rounded-full p-3.5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                            >
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path
+                                    d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"
+                                />
+                                <path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0" />
+                                <path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5" />
+                            </g>
+                        </svg>
                     </a>
-                    <a target="_blank" href="https://api.certificates.dev/certificates/9c6d9df5-86f3-4744-98cc-924a8b9624ae/download?signature=c0fdf632a9d1ee905abc31561c746621f11cbda4462a6bdd45b9dd409c8ba75f">
-                        <svg class="size-12 p-3.5 bg-tan-tertiary rounded-full" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"/><path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5"/></g></svg>
+                    <a
+                        target="_blank"
+                        href="https://api.certificates.dev/certificates/9c6d9df5-86f3-4744-98cc-924a8b9624ae/download?signature=c0fdf632a9d1ee905abc31561c746621f11cbda4462a6bdd45b9dd409c8ba75f"
+                    >
+                        <svg
+                            class="bg-tan-tertiary size-12 rounded-full p-3.5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <g
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                            >
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                <path
+                                    d="M5 8V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2h-5"
+                                />
+                                <path d="M3 14a3 3 0 1 0 6 0a3 3 0 1 0-6 0" />
+                                <path d="M4.5 17L3 22l3-1.5L9 22l-1.5-5" />
+                            </g>
+                        </svg>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mb-8">
+    <section id="scholarships-and-awards" class="mb-8">
         <h2 class="section-heading">Scholarships and Awards</h2>
-        <ul class="list-disc ml-4 space-y-2">
+        <ul class="ml-4 list-disc space-y-2">
             {{ scholarships_and_awards }}
                 <li>{{ value }}</li>
             {{ /scholarships_and_awards }}
         </ul>
     </section>
 
-    <section>
+    <section id="work-experience" class="mb-8">
         <h2 class="section-heading">Work Experience</h2>
-        <ul class="space-y-8 mb-24">
+        <ul class="mb-24 space-y-8">
             {{ work_experience }}
                 <li>
-                    <h4 class="section-subheading text-xl mb-2">{{ position }}</h4>
+                    <h4 class="section-subheading mb-2 text-xl">
+                        {{ position }}
+                    </h4>
                     <p class="italic">
-                        {{ company }}, {{ started format="F Y" }}
-                        —
+                        {{ company }}
+                        , {{ started format="F Y" }} —
                         {{ if left }}
                             {{ left format="F Y" }}
                         {{ else }}
@@ -75,39 +216,37 @@
         </ul>
     </section>
 {{ /partial:layout/main }}
-
 {{ push:styles }}
-<style>
-    #skills-experience-box {
-        display: flex;
-    }
-
-    #skills-box {
-        padding-right: 36px;
-    }
-
-    .degree {
-        margin-bottom: 18px;
-    }
-
-    #work-box li {
-        width: 66%;
-        
-    }
-    #work-box li:nth-child(even) {
-        margin: 36px 0;
-    }
-
-    @media only screen and (max-width: 650px) {
+    <style>
         #skills-experience-box {
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
+            display: flex;
+        }
+
+        #skills-box {
+            padding-right: 36px;
+        }
+
+        .degree {
+            margin-bottom: 18px;
         }
 
         #work-box li {
-            width: 92%;
+            width: 66%;
         }
-    }
-</style>
+        #work-box li:nth-child(even) {
+            margin: 36px 0;
+        }
+
+        @media only screen and (max-width: 650px) {
+            #skills-experience-box {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+
+            #work-box li {
+                width: 92%;
+            }
+        }
+    </style>
 {{ /push:styles }}

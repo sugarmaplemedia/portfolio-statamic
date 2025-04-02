@@ -14,6 +14,8 @@ tabs:
               validate:
                 - required
           -
+            import: page_builder
+          -
             handle: skills
             field:
               buttons:
