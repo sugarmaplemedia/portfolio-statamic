@@ -1,6 +1,6 @@
 ---
 id: e39092c7-f167-4b74-a459-6bb75f43eaf7
-blueprint: resume
+blueprint: about-me
 title: 'About Me'
 scholarships_and_awards:
   - 'Student Technology Innovation Award Winner w/ Morgan Helmle (2024, NMU)'
