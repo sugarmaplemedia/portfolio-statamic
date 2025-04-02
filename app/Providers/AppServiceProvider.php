@@ -5,9 +5,12 @@ namespace App\Providers;
 use App\Policies\CustomUserPolicy;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Policies\UserPolicy;
+use Statamic\StaticSite\SSG;
 use Studio1902\PeakSeo\Handlers\ErrorPage;
 
 class AppServiceProvider extends ServiceProvider
@@ -38,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
         // Statamic::style('app', 'cp');
 
         ErrorPage::handle404AsEntry();
+
+        SSG::after(function () {
+            File::copyDirectory('public/images', 'storage/app/static/images');
+        });
 
         $this->bootRoute();
     }
